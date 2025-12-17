@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document 1</title>
+    <link rel="stylesheet" href="../calculator.css"/>
+</head>
+<body>
+    <h1>Java Script Calculator</h1>
+    <button onclick="alert('Hello Everyone')">Click Me</button>
+    <div id="Container">
+
+    </div>
+    <script>
+        let displayNumbers = 0;
+        let Container = document.getElementById("Container"); 
+        let count=0;
+        let operators=['+','-','/','*'];
+        let resultBox=document.createElement("input");
+        var br=document.createElement("br");
+        resultBox.type="text";
+        resultBox.id="result";
+        Container.appendChild(resultBox);
+        for(let i=9;i>=displayNumbers;i--){
+            let button = document.createElement("button"); 
+            var br=document.createElement("br");
+            button.innerText = i;
+            button.style.color="black";
+            button.style.backgroundColor="white";
+            button.addEventListener("click",function(){
+                resultBox.value+=i;
+            });
+            if(count%3==0){
+                Container.appendChild(br);
+            }
+            Container.appendChild(button);
+            count++;   
+        }
+        Container.appendChild(br);
+        for(let i=0;i<operators.length;i++){
+            let button = document.createElement("button");
+            button.innerText=operators[i];
+            button.addEventListener("click",function(){
+                let value=resultBox.value;
+                resultBox.value+=operators[i];
+            });
+            Container.appendChild(button);
+        }
+            let resultButton = document.createElement("button"); 
+            resultButton.innerText="=";
+            resultButton.addEventListener("click",function(){
+                let value=resultBox.value;
+                resultBox.value=eval(value);
+            });
+            Container.appendChild(resultButton);   
+             
+    </script>   
+</body>
+</html>
